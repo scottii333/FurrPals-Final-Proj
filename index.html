@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FurrPals- Quality Beef Bites</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=telma@900,300,1,700,500,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        list-style: none;
+        text-decoration: none;
+        scroll-behavior: smooth;
+      }
+      body {
+        width: auto;
+      }
+      header {
+        background-color: #561c24;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 5rem;
+        font-size: 18px;
+        position: fixed;
+        z-index: 5;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+      }
+      .nav-links a {
+        color: white;
+      }
+      .nav-links li a:hover {
+        color: #f2bd40;
+      }
+
+      header .toggle-btn {
+        color: rgb(255, 255, 255);
+        font-size: 2rem;
+        cursor: pointer;
+        display: none;
+      }
+      header .toggle-btn:hover {
+        color: #f2bd40;
+      }
+      header .dropdown-nav {
+        position: absolute;
+        background-color: #f8e6a5;
+        width: 100%;
+        border-radius: 0.5rem;
+        top: 5rem;
+        display: none;
+        transition: opacity 0.5s ease-in-out;
+        opacity: 0; /*to be invisible*/
+      }
+      header .dropdown-nav.active {
+        opacity: 1; /* Make visible when active class is present */
+      }
+      header .dropdown-nav li {
+        display: flex;
+        justify-content: center;
+        padding: 0.4rem;
+      }
+      header .dropdown-nav li a {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #561c24;
+      }
+      header .dropdown-nav li a:hover {
+        color: rgb(240, 204, 24);
+      }
+
+      .logo {
+        font-size: 3rem;
+        color: white;
+        font-family: "Telma", cursive;
+        font-weight: 500;
+      }
+      .home {
+        display: flex;
+        padding: 2rem;
+        height: auto;
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #fffdf6;
+      }
+      .home-content {
+        padding-top: 5rem;
+        font-weight: 500;
+        font-size: 20px;
+      }
+      .home-content h1 {
+        padding-bottom: 1rem;
+      }
+      .home-content p {
+        padding-bottom: 2rem;
+      }
+      .home-content a {
+        position: relative;
+        color: #fffdf6;
+        background-color: #561c24;
+        padding: 0.7rem;
+        border-radius: 2rem;
+      }
+      .home-content a:hover {
+        color: #f2bd40;
+      }
+      .home-image1 img {
+        width: 50rem;
+        margin-top: 5rem;
+      }
+
+      .home-circle1 {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        background-color: #bea186;
+        background-image: linear-gradient(
+          123deg,
+          #bea186 0%,
+          #ddc1a8 50%,
+          #ebecf0 100%
+        );
+        position: relative;
+        top: -20px;
+        
+      }
+
+      .home-circle2 {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        background-color: #bea186;
+        background-image: linear-gradient(
+          123deg,
+          #bea186 0%,
+          #ddc1a8 50%,
+          #ebecf0 100%
+        );
+        position: relative;
+        top: 100px;
+        z-index: 2;
+      }
+
+      .home-welcome h2 {
+        margin-top: 10rem;
+        font-weight: 600;
+        display: flex;
+        font-size: 2rem;
+        justify-content: center;
+      }
+      .home-welcome p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+        font-size: 1.5rem;
+      }
+
+      .product-section {
+        padding-top: 10rem;
+        margin-top: 10rem;
+        margin-bottom: 10rem;
+        width: 100%;
+        height: auto;
+        background-color: #fffdf6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        position: relative;
+      }
+
+      .product-section .product-benefit {
+        margin: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 15rem;
+        height: auto;
+        flex-wrap: wrap;
+        font-size: 1.5rem;
+      }
+      .product-section .product-benefit img {
+        padding-bottom: 2rem;
+      }
+      .product-section .product-benefit p {
+        padding-left: 1rem;
+      }
+
+      .product-section .product-img {
+        margin: 1rem;
+        height: auto;
+        width: 25rem;
+        position: relative;
+        display: flex;
+        justify-content: left;
+        z-index: 0;
+        background-color: transparent;
+        filter: drop-shadow(10px 10px 20px rgb(78, 77, 77));
+      }
+
+      .product-section .product-img .img-up {
+        position: absolute;
+        top: -2rem;
+        left: 11rem;
+        z-index: -1;
+      }
+
+      .product-section .product-macro {
+        margin: 1rem;
+        height: 40rem;
+        width: 15rem;
+        line-height: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5rem;
+      }
+
+      .buy-section {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .buy-section .buy-links {
+        margin: 2rem;
+      }
+      .buy-section .buy-links .tiktok-embed {
+        height: 36rem;
+        filter: drop-shadow(10px 10px 10px rgb(78, 77, 77));
+      }
+
+      .buy-banner {
+        color: black;
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 2rem;
+        padding-top: 7rem;
+      }
+
+      .buy-section .buy-action a {
+        font-size: 1rem;
+        margin: 4rem;
+        background-color: #561c24;
+        font-weight: 600;
+        padding: 1rem;
+        border-radius: 2rem;
+        color: #ffffff;
+      }
+      .buy-section .buy-action a:hover {
+        color: #f2bd40;
+      }
+
+      .about-section {
+        height: auto;
+        width: 100%;
+        background-color: #561c24;
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 2rem;
+        margin-bottom: 10rem;
+        margin-top: 10rem;
+      }
+      .about-section .about-img {
+        position: relative;
+        width: 50rem;
+        height: 40rem;
+        background-image: url("/FurrPals/images/dog2.png");
+        background-size: cover;
+        background-position: center;
+      }
+      .about-section .about-img h2 {
+        position: absolute;
+        top: 40%;
+        left: 65%;
+        font-size: 2.5rem;
+        color: #561c24;
+      }
+      .about-section .about-info {
+        width: 30rem;
+        background-color: #561c24;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+      }
+      .about-section .about-info p {
+        color: white;
+        font-size: 2rem;
+        line-height: 1.5;
+      }
+
+      footer {
+        display: flex;
+        justify-content: space-around;
+        height: auto;
+        padding: 2rem;
+        color: white;
+        background-color: #561c24;
+        flex-wrap: wrap;
+      }
+      footer .rights {
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+      }
+      footer .social-links {
+        height: auto;
+        width: 260px;
+        display: flex;
+        margin: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+      }
+
+      footer .social-links a {
+        padding: 1rem;
+        color: white;
+        width: 130px;
+      }
+      footer .dev-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-wrap: wrap;
+        padding: 2rem;
+      }
+      footer .dev-links h3 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 200;
+      }
+      footer .dev-links a {
+        color: rgb(236, 236, 99);
+      }
+
+      @media (max-width: 890px) {
+        header .nav-links {
+          display: none;
+        }
+        header .toggle-btn {
+          display: block;
+        }
+        header .dropdown-nav {
+          display: block;
+        }
+        .home-image1 img {
+          width: 20rem;
+        }
+        .about-section .about-img {
+          width: 40rem;
+          height: 25rem;
+        }
+        .about-section .about-img h2 {
+          font-size: 1.5rem;
+        }
+      }
+
+  
+
+      .form {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        padding-top: 8rem;
+      }
+
+      .form h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      textarea {
+        resize: vertical;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .success-message {
+        margin-top: 20px;
+        text-align: center;
+        color: #4caf50;
+        font-size: 18px;
+      }
+
+      .box{
+        transform: translateX(400%);
+        transition: transform 1.5s ease;
+      }
+      .box:nth-of-type(even){
+        transform: translateX(-400%);
+      }
+      .box.show{
+        transform: translateX(0);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo animate__animated animate__fadeInLeft">FurrPals</div>
+      <ul class="nav-links animate__animated animate__fadeInLeft">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#products">Our Products</a></li>
+        <li><a href="#buy">Where to Buy</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+      <div class="toggle-btn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <ul class="dropdown-nav">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#products">Our Products</a></li>
+        <li><a href="#buy">Where to Buy</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </header>
+
+    <div id="hero" class="home">
+      <div class="home-content animate__animated animate__fadeInLeft">
+        <h1>
+          Quality <br />
+          Beef Bites
+        </h1>
+
+        <p>
+          Unleash Flavor, Fuel Energy. <br />
+          Protein-packed joy for a <br />
+          tail-wagging delight.
+        </p>
+
+        <a href="#buy">Click to Shop Now!</a>
+      </div>
+
+      <div class="home-circle1 animate__animated animate__fadeInLeft"></div>
+
+      <div class="home-circle2 animate__animated animate__fadeInLeft"></div>
+
+      <div class="home-image1 animate__animated animate__fadeInLeft">
+        <img src="/FurrPals/images/dog1.png" alt="cute dog" />
+      </div>
+    </div>
+
+    <div class="home-welcome animate__animated animate__fadeInLeft">
+      <h2 class="box ">Hey Pawesome Pals!</h2>
+      <p class="box">
+        Every dog is a FurrPals dog. At FurrPals, we celebrate the unique spirit
+        of each furry friend, making tails wag and hearts happy. Treat your
+        one-of-a-kind companion to the extraordinary – where every moment is an
+        adventure in love. Unleash joy at FurrPals!
+      </p>
+    </div>
+
+    <div id="products" class="product-section">
+      <div class="product-benefit box ">
+        <img src="/FurrPals/images/meat.svg" height="110rem" alt="meat icon" />
+        <p>
+          Quality <br />
+          choice of meat
+        </p>
+
+        <img
+          src="/FurrPals/images/bones.svg"
+          height="110rem"
+          alt="bones icon"
+        />
+        <p>
+          High source of <br />
+          protein
+        </p>
+
+        <img
+          src="/FurrPals/images/stomach.svg"
+          height="110rem"
+          alt="stomach icon"
+        />
+        <p>
+          Low sodium <br />
+          Low fat
+        </p>
+      </div>
+
+      <div class="product-img box ">
+        <img
+          src="/FurrPals/images/furrpals.png"
+          height="280rem"
+          alt=" Beef Bites"
+        />
+
+        <img
+          class="img-up"
+          src="/FurrPals/images/furrpals.png"
+          height="280rem"
+          alt=" Beef Bites"
+        />
+      </div>
+
+      <div class="product-macro box ">
+        <ul>
+          <li>&gt;10.0% Crude Protein</li>
+          <li>&gt;2.0% Crude Fat</li>
+          <li>&lt;8.0% Crude Ash</li>
+          <li>&lt;1.0% Crude Fiber</li>
+          <li>&lt;35.0% Moisture</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="buy" class="buy-banner">
+      <h2 class="box">Meet Our Delighted Customer</h2>
+    </div>
+
+    <div class="buy-section">
+      <div class="buy-links box">
+        <blockquote
+          class="tiktok-embed"
+          cite="https://www.tiktok.com/@chyut0820/video/7286305817710710022"
+          data-video-id="7286305817710710022"
+          style="max-width: 605px; min-width: 325px"
+        >
+          <section>
+            <a
+              target="_blank"
+              title="@chyut0820"
+              href="https://www.tiktok.com/@chyut0820?refer=embed"
+              >@chyut0820</a
+            >
+            Available na ulit 🐾🥰
+            <a
+              title="foryou"
+              target="_blank"
+              href="https://www.tiktok.com/tag/foryou?refer=embed"
+              >#foryou</a
+            >
+            <a
+              title="foryoupage"
+              target="_blank"
+              href="https://www.tiktok.com/tag/foryoupage?refer=embed"
+              >#foryoupage</a
+            >
+            <a
+              title="fyp"
+              target="_blank"
+              href="https://www.tiktok.com/tag/fyp?refer=embed"
+              >#fyp</a
+            >
+            <a
+              title="beefbites"
+              target="_blank"
+              href="https://www.tiktok.com/tag/beefbites?refer=embed"
+              >#beefbites</a
+            >
+            <a
+              title="dogtreats"
+              target="_blank"
+              href="https://www.tiktok.com/tag/dogtreats?refer=embed"
+              >#dogtreats</a
+            >
+            <a
+              title="furbaby"
+              target="_blank"
+              href="https://www.tiktok.com/tag/furbaby?refer=embed"
+              >#furbaby</a
+            >
+            <a
+              target="_blank"
+              title="♬ original sound  - Milo&#38;Paws"
+              href="https://www.tiktok.com/music/original-sound-MiloPaws-7264527416260791046?refer=embed"
+              >♬ original sound - Milo&#38;Paws</a
+            >
+          </section>
+        </blockquote>
+        <script async src="https://www.tiktok.com/embed.js"></script>
+      </div>
+
+      <div class="buy-links box">
+        <blockquote
+          class="tiktok-embed"
+          cite="https://www.tiktok.com/@furrpals.ph/video/7272353606798527749"
+          data-video-id="7272353606798527749"
+          style="max-width: 605px; min-width: 325px"
+        >
+          <section>
+            <a
+              target="_blank"
+              title="@furrpals.ph"
+              href="https://www.tiktok.com/@furrpals.ph?refer=embed"
+              >@furrpals.ph</a
+            >
+            PAYDAY SALE NA!!!
+            <a
+              title="furrpals"
+              target="_blank"
+              href="https://www.tiktok.com/tag/furrpals?refer=embed"
+              >#furrpals</a
+            >
+            <a
+              title="petlover"
+              target="_blank"
+              href="https://www.tiktok.com/tag/petlover?refer=embed"
+              >#petlover</a
+            >
+            <a
+              title="pets"
+              target="_blank"
+              href="https://www.tiktok.com/tag/pets?refer=embed"
+              >#pets</a
+            >
+            <a
+              title="petsupplies"
+              target="_blank"
+              href="https://www.tiktok.com/tag/petsupplies?refer=embed"
+              >#petsupplies</a
+            >
+            <a
+              title="petshop"
+              target="_blank"
+              href="https://www.tiktok.com/tag/petshop?refer=embed"
+              >#petshop</a
+            >
+            <a
+              title="sulitfyp"
+              target="_blank"
+              href="https://www.tiktok.com/tag/sulitfyp?refer=embed"
+              >#sulitfyp</a
+            >
+            <a
+              title="dogs"
+              target="_blank"
+              href="https://www.tiktok.com/tag/dogs?refer=embed"
+              >#dogs</a
+            >
+            <a
+              title="petfinds"
+              target="_blank"
+              href="https://www.tiktok.com/tag/petfinds?refer=embed"
+              >#petfinds</a
+            >
+            <a
+              title="philippines"
+              target="_blank"
+              href="https://www.tiktok.com/tag/philippines?refer=embed"
+              >#philippines</a
+            >
+            <a
+              title="budolfinds"
+              target="_blank"
+              href="https://www.tiktok.com/tag/budolfinds?refer=embed"
+              >#budolfinds</a
+            >
+            <a
+              title="sulitfinds"
+              target="_blank"
+              href="https://www.tiktok.com/tag/sulitfinds?refer=embed"
+              >#sulitfinds</a
+            >
+            <a
+              title="pettokshop"
+              target="_blank"
+              href="https://www.tiktok.com/tag/pettokshop?refer=embed"
+              >#pettokshop</a
+            >
+            <a
+              title="beefbites"
+              target="_blank"
+              href="https://www.tiktok.com/tag/beefbites?refer=embed"
+              >#beefbites</a
+            >
+            <a
+              title="furrpalstreats"
+              target="_blank"
+              href="https://www.tiktok.com/tag/furrpalstreats?refer=embed"
+              >#furrpalstreats</a
+            >
+            <a
+              title="turrpalsbeefbites"
+              target="_blank"
+              href="https://www.tiktok.com/tag/turrpalsbeefbites?refer=embed"
+              >#turrpalsbeefbites</a
+            >
+            <a
+              title="pettreats"
+              target="_blank"
+              href="https://www.tiktok.com/tag/pettreats?refer=embed"
+              >#pettreats</a
+            >
+            <a
+              title="petfoods"
+              target="_blank"
+              href="https://www.tiktok.com/tag/petfoods?refer=embed"
+              >#petfoods</a
+            >
+            <a
+              target="_blank"
+              title="♬ original sound  - Furrpals"
+              href="https://www.tiktok.com/music/original-sound-Furrpals-7272353643637689093?refer=embed"
+              >♬ original sound - Furrpals</a
+            >
+          </section>
+        </blockquote>
+        <script async src="https://www.tiktok.com/embed.js"></script>
+      </div>
+
+      <div class="buy-links box">
+        <blockquote
+          class="tiktok-embed"
+          cite="https://www.tiktok.com/@chyut0820/video/7275584961703365893"
+          data-video-id="7275584961703365893"
+          style="max-width: 605px; min-width: 325px"
+        >
+          <section>
+            <a
+              target="_blank"
+              title="@chyut0820"
+              href="https://www.tiktok.com/@chyut0820?refer=embed"
+              >@chyut0820</a
+            >
+            Replying to @Miko&#38;MiKaylaShop True! Deserve tu ng mga furbabies
+            natin🥰
+            <a
+              title="foryou"
+              target="_blank"
+              href="https://www.tiktok.com/tag/foryou?refer=embed"
+              >#foryou</a
+            >
+            <a
+              title="foryoupage"
+              target="_blank"
+              href="https://www.tiktok.com/tag/foryoupage?refer=embed"
+              >#foryoupage</a
+            >
+            <a
+              title="fyp"
+              target="_blank"
+              href="https://www.tiktok.com/tag/fyp?refer=embed"
+              >#fyp</a
+            >
+            <a
+              title="furbaby"
+              target="_blank"
+              href="https://www.tiktok.com/tag/furbaby?refer=embed"
+              >#furbaby</a
+            >
+            <a
+              title="dogtreats"
+              target="_blank"
+              href="https://www.tiktok.com/tag/dogtreats?refer=embed"
+              >#dogtreats</a
+            >
+            <a
+              title="beefbites"
+              target="_blank"
+              href="https://www.tiktok.com/tag/beefbites?refer=embed"
+              >#beefbites</a
+            >
+            <a
+              target="_blank"
+              title="♬ original sound  - Furrpals"
+              href="https://www.tiktok.com/music/original-sound-Furrpals-7269381007232879365?refer=embed"
+              >♬ original sound - Furrpals</a
+            >
+          </section>
+        </blockquote>
+        <script async src="https://www.tiktok.com/embed.js"></script>
+      </div>
+
+      <div class="buy-links box">
+        <blockquote
+          class="tiktok-embed"
+          cite="https://www.tiktok.com/@afurrdable/video/7301656387665415430"
+          data-video-id="7301656387665415430"
+          style="max-width: 605px; min-width: 325px"
+        >
+          <section>
+            <a
+              target="_blank"
+              title="@afurrdable"
+              href="https://www.tiktok.com/@afurrdable?refer=embed"
+              >@afurrdable</a
+            >
+            Beef Bites for training your pets basic tricks!
+            <a
+              title="dogtreat"
+              target="_blank"
+              href="https://www.tiktok.com/tag/dogtreat?refer=embed"
+              >#dogtreat</a
+            >
+            <a
+              title="treatsfordogs"
+              target="_blank"
+              href="https://www.tiktok.com/tag/treatsfordogs?refer=embed"
+              >#treatsfordogs</a
+            >
+            <a
+              title="beefbites"
+              target="_blank"
+              href="https://www.tiktok.com/tag/beefbites?refer=embed"
+              >#beefbites</a
+            >
+            <a
+              title="beefbitesforfurbabies"
+              target="_blank"
+              href="https://www.tiktok.com/tag/beefbitesforfurbabies?refer=embed"
+              >#beefbitesforfurbabies</a
+            >
+            <a
+              title="furrpals"
+              target="_blank"
+              href="https://www.tiktok.com/tag/furrpals?refer=embed"
+              >#furrpals</a
+            >
+            <a
+              title="furrpalstreats"
+              target="_blank"
+              href="https://www.tiktok.com/tag/furrpalstreats?refer=embed"
+              >#furrpalstreats</a
+            >
+            <a
+              target="_blank"
+              title="♬ Chill Vibes - Tollan Kim"
+              href="https://www.tiktok.com/music/Chill-Vibes-7084465663108089857?refer=embed"
+              >♬ Chill Vibes - Tollan Kim</a
+            >
+          </section>
+        </blockquote>
+        <script async src="https://www.tiktok.com/embed.js"></script>
+      </div>
+
+      <div class="buy-links box">
+        <blockquote
+          class="tiktok-embed"
+          cite="https://www.tiktok.com/@chyut0820/video/7276383949285297414"
+          data-video-id="7276383949285297414"
+          style="max-width: 605px; min-width: 325px"
+        >
+          <section>
+            <a
+              target="_blank"
+              title="@chyut0820"
+              href="https://www.tiktok.com/@chyut0820?refer=embed"
+              >@chyut0820</a
+            >
+            Replying to @Elaine here’s the ingredients po
+            <a
+              title="foryou"
+              target="_blank"
+              href="https://www.tiktok.com/tag/foryou?refer=embed"
+              >#foryou</a
+            >
+            <a
+              title="foryoupage"
+              target="_blank"
+              href="https://www.tiktok.com/tag/foryoupage?refer=embed"
+              >#foryoupage</a
+            >
+            <a
+              title="fyp"
+              target="_blank"
+              href="https://www.tiktok.com/tag/fyp?refer=embed"
+              >#fyp</a
+            >
+            <a
+              title="dogtreats"
+              target="_blank"
+              href="https://www.tiktok.com/tag/dogtreats?refer=embed"
+              >#dogtreats</a
+            >
+            <a
+              title="beefbitesforfurbabies"
+              target="_blank"
+              href="https://www.tiktok.com/tag/beefbitesforfurbabies?refer=embed"
+              >#beefbitesforfurbabies</a
+            >
+            <a
+              title="furbaby"
+              target="_blank"
+              href="https://www.tiktok.com/tag/furbaby?refer=embed"
+              >#furbaby</a
+            >
+            <a
+              title="furrpals"
+              target="_blank"
+              href="https://www.tiktok.com/tag/furrpals?refer=embed"
+              >#furrpals</a
+            >
+            <a
+              target="_blank"
+              title="♬ Cute - Aurel Surya Lie"
+              href="https://www.tiktok.com/music/Cute-7136445672676411393?refer=embed"
+              >♬ Cute - Aurel Surya Lie</a
+            >
+          </section>
+        </blockquote>
+        <script async src="https://www.tiktok.com/embed.js"></script>
+      </div>
+
+      <div class="buy-links box">
+        <blockquote
+          class="tiktok-embed"
+          cite="https://www.tiktok.com/@meoolow/video/7264527356558085382"
+          data-video-id="7264527356558085382"
+          style="max-width: 605px; min-width: 325px"
+        >
+          <section>
+            <a
+              target="_blank"
+              title="@meoolow"
+              href="https://www.tiktok.com/@meoolow?refer=embed"
+              >@meoolow</a
+            >
+            Buy1 Get1 may option sila when you add to cart ang Beef Bites
+            Premium trears nila super bango at siksik!
+            <a
+              title="beefbites"
+              target="_blank"
+              href="https://www.tiktok.com/tag/beefbites?refer=embed"
+              >#beefbites</a
+            >
+            <a
+              title="beefbitesforfurbabies"
+              target="_blank"
+              href="https://www.tiktok.com/tag/beefbitesforfurbabies?refer=embed"
+              >#beefbitesforfurbabies</a
+            >
+            <a
+              title="furpals"
+              target="_blank"
+              href="https://www.tiktok.com/tag/furpals?refer=embed"
+              >#furpals</a
+            >
+            <a
+              title="dogtreats"
+              target="_blank"
+              href="https://www.tiktok.com/tag/dogtreats?refer=embed"
+              >#dogtreats</a
+            >
+            <a
+              title="megasale88"
+              target="_blank"
+              href="https://www.tiktok.com/tag/megasale88?refer=embed"
+              >#megasale88</a
+            >
+            <a
+              target="_blank"
+              title="♬ original sound  - Milo&#38;Paws"
+              href="https://www.tiktok.com/music/original-sound-MiloPaws-7264527416260791046?refer=embed"
+              >♬ original sound - Milo&#38;Paws</a
+            >
+          </section>
+        </blockquote>
+        <script async src="https://www.tiktok.com/embed.js"></script>
+      </div>
+
+      <div class="buy-action box">
+        <a href="https://www.tiktok.com/search?q=beef%20bites&t=1707311313072">
+          Click to view More</a
+        >
+      </div>
+    </div>
+
+    <div id="about" class="about-section">
+      <div class="about-img box">
+        <h2>
+          Health <br />
+          is our <br />
+          Obsession
+        </h2>
+      </div>
+      <div class="about-info box">
+        <p>
+          All our actions are fueled by a deep passion for the health and
+          happiness of each and every cat and dog in our care.
+        </p>
+      </div>
+    </div>
+
+    <div id="contact"  class="form box">
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Your Name"
+          required
+        />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Your Email"
+          required
+        />
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          placeholder="Your Message"
+          required
+        ></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <div id="successMessage" class="success-message"></div>
+    </div>
+
+    <footer >
+      <div class="rights box">
+        <p>
+          © 2024 FurrPals. All rights reserved <br />
+          Contact: info@furrpals.com
+        </p>
+      </div>
+
+      <div class="social-links box">
+        <a href="https://www.facebook.com/profile.php?id=61551498512404">
+          <img src="/FurrPals/images/facebook.png" height="30rem" alt="" />
+          Facebook</a
+        >
+
+        <a href="https://www.tiktok.com/@furrpals.ph">
+          <img src="/FurrPals/images/tiktok.png" height="30rem" alt="" />
+          Tiktok</a
+        >
+
+        <a href="https://shopee.ph/furrpals">
+          <img src="/FurrPals/images/shopee.png" height="30rem" alt="" />
+          Shopee</a
+        >
+
+        <a
+          href="https://www.lazada.com.ph/products/furrpals-beef-bites-dog-treat-training-treat-dog-food-topper-appetite-booster-beef-cubes-i4149951986-s23104928991.html?c=&channelLpJumpArgs=&clickTrackInfo=query%253Afurrpals%253Bnid%253A4149951986%253Bsrc%253ALazadaMainSrp%253Brn%253A763e9122e62bdcdb6d167e67be4a9e07%253Bregion%253Aph%253Bsku%253A4149951986_PH%253Bprice%253A138%253Bclient%253Adesktop%253Bsupplier_id%253A500537408153%253Bbiz_source%253Ah5_internal%253Bslot%253A0%253Butlog_bucket_id%253A470687%253Basc_category_id%253A21928%253Bitem_id%253A4149951986%253Bsku_id%253A23104928991%253Bshop_id%253A4662877&fastshipping=0&freeshipping=0&fs_ab=2&fuse_fs=&lang=en&location=Metro%20Manila&price=138&priceCompare=skuId%3A23104928991%3Bsource%3Alazada-search-voucher%3Bsn%3A763e9122e62bdcdb6d167e67be4a9e07%3BunionTrace%3A2151e55a17070225704728301e555d%3BoriginPrice%3A13800%3BvoucherPrice%3A13800%3BdisplayPrice%3A13800%3BsinglePromotionId%3A-1%3BsingleToolCode%3A-1%3BvoucherPricePlugin%3A1%3BbuyerId%3A0%3Btimestamp%3A1707022570876&ratingscore=4.9405940594059405&request_id=763e9122e62bdcdb6d167e67be4a9e07&review=101&sale=388&search=1&source=search&spm=a2o4l.searchlist.list.0&stock=1"
+        >
+          <img src="/FurrPals/images/lazada.png" height="30rem" alt="" /> Lazada
+        </a>
+      </div>
+
+      <div class="dev-links ">
+        <h3>
+          Powered by <a href="https://github.com/scottii333">HustleMindDev</a> <br>
+
+          Design by <a href="https://www.facebook.com/janeilletrixie">Janeille Trixie</a>
+        </h3>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggleBtn = document.querySelector(".toggle-btn");
+        const dropdownNav = document.querySelector(".dropdown-nav");
+
+        toggleBtn.addEventListener("click", function () {
+          // Toggle the 'active' class on the dropdownNav
+          dropdownNav.classList.toggle("active");
+
+          // Toggle between menu icon and close icon
+          const icon = toggleBtn.querySelector("i");
+
+          // Toggle 'fa-bars' and 'fa-times'
+          icon.classList.toggle("fa-bars");
+          icon.classList.toggle("fa-times");
+        });
+      });
+
+      const boxes = document.querySelectorAll(".box");
+
+      const checkBoxes = () => {
+        const triggerBottom=(window.innerHeight/5)*4;
+        boxes.forEach((box)=> {
+          const boxTop = box.getBoundingClientRect().top;
+          if (boxTop < triggerBottom) box.classList.add("show");
+          else box.classList.remove("show");
+        })
+      }
+      window.addEventListener("scroll",checkBoxes);
+      checkBoxes()
+    </script>
+  </body>
+</html>
