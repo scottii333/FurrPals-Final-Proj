@@ -33,8 +33,11 @@
         scroll-behavior: smooth;
         resize: none;
       }
+      html{
+        resize:none;
+      }
       body {
-        width: auto;
+        width: 100%;
         overflow-x: hidden;
         overflow-y: auto;
         resize: none;
@@ -451,11 +454,11 @@
       }
 
       .box{
-        transform: translateX(400%);
-        transition: transform 1.5s ease;
+        transform: translateX(5%);
+        transition: transform 1s ease;
       }
       .box:nth-of-type(even){
-        transform: translateX(-400%);
+        transform: translateX(-5%);
       }
       .box.show{
         transform: translateX(0);
